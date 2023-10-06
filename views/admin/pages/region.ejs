@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Real Estate Website</title>
+    <script src="/js/delete_modal.js" defer></script>
+    <link rel="stylesheet" href="/css/main.css">
+</head>
+
+<body>
+    <header>
+        <%- include('../partials/nav_header.ejs') %>
+    </header>
+        <section>
+            <div class="region__wrapper">
+                <h1 class="region__title"><%= region %></h1>
+                <p class="region__description"><%= description %></p>
+                <div class="region__location-grid--admin">
+                    <% locations.forEach( location => { %>
+                        <div class="region__location-container--admin">
+                            <img class="region__location-image--admin" src="<%= location.imageLink %>" alt="" />
+                            <h3 class="region__location-title--admin"><%= location.location %></h3>
+                            <div class="region__admin-controls">
+                                <form class="region__admin-delete-form" action="/<%= region %>/admin/delete" method="POST">
+                                    <input type="hidden" name="region" value="<%= region %>" />
+                                    <input type="hidden" name="location" value="<%= location.location %>"/>
+                                    <input type="hidden" name="csrfToken" value="<%= csrfToken %>">
+                                    <button class="admin-delete-button">Delete</button>
+                                </form>
+                                <a href="/<%= region %>/<%= location.location %>/admin"><button>Update</button></a>
+                            </div>
+                        </div>
+                    <% }) %>
+                    <a class="region__location-container--admin region__location-button-container" href="/admin/add-location-form">
+                        <span class="region__location-more">+</span>
+                        <button class="region__location-button">Add more Location</button>
+                    </a>
+                </div>
+            </div>
+        </section>
+    <%- include('../../partials/footer.ejs') %>
+    <div id="delete__modal" class="modal">
+        <div class="modal__content">
+            <span class="modal__close-button">&times;</span>
+            <p class="modal__message">Are you sure you want to delete this location?</p>
+            <p class="modal__message">This will also remove any pages and / or articles related to it.</p>
+            <div class="modal__buttons-wrapper">
+                <button id="modal__confirm-delete-button">Yes</button>
+                <button id="modal__cancel-delete-button">Cancel</button>
+            </div>
+        </div>
+    </div>
+</body>
+
+</html>

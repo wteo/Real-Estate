@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Real Estate Website</title>
+    <link rel="stylesheet" href="/css/main.css">
+</head>
+
+<body>
+    <header>
+        <%- include('../partials/nav_header.ejs') %>
+    </header>
+        <section>
+            <form class="location__form" action="/<%= region %>/admin/submit-update-region-form" method="POST">
+
+                <label for="state">State:</label>
+                <input type="text" value="<%= state %>" name="state" required>
+                
+                <label for="region">Region:</label>
+                <input type="text" value="<%= region %>" name="region" required>
+
+                <label for="description">Description:</label>
+                <textarea type="text" name="description" rows="4" required>
+                    <%= description %>
+                </textarea>
+
+                <input type="hidden" name="csrfToken" value="<%= csrfToken %>">
+                
+                <div class="buttons-wrapper">
+                    <button type="submit">Update Region</button>
+                    <a href="/admin/"><button type="button">Cancel</button></a>
+                </div>
+            </form>
+        </section>
+    <%- include('../../partials/footer.ejs') %>
+</body>
+
+</html>

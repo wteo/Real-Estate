@@ -1,0 +1,38 @@
+.location__form, .amenity__form, .login__form, .register__form {
+    max-width: 500px;
+    margin: 2rem auto;
+    padding: 5rem;
+    background-color: #fff;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+}
+
+.location__form label,
+.amenity__form label,
+.login__form label,
+.register__form label {
+    display: block;
+    margin-bottom: 0.5rem;
+    font-weight: bold;
+}
+
+.location__form input, .location__form select, .location__form textarea,
+.amenity__form input, .amenity__form select, .amenity__form textarea,
+.login__form input, .register__form input {
+    box-sizing: border-box; 
+    width: 100%;
+    padding: 0.5rem;
+    margin-bottom: 2rem;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+}
+
+.location__form textarea, .amenity__form textarea {
+    resize: vertical;
+    text-align: left;
+    vertical-align: top; 
+}
+
+.login__form .login__form-text {
+    margin: 0;
+}

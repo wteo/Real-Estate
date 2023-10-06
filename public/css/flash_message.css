@@ -1,0 +1,20 @@
+.flash-message {
+    border-radius: 5px;
+    padding: 10px;
+    margin: 0 auto;
+    margin-bottom: 5vh;
+    text-align: center;
+    width: fit-content;
+}
+
+.success {
+    color: green;
+    background-color: lightgreen;
+    border: 1px solid green;
+}
+
+.invalid {
+    color: red;
+    background-color: pink;
+    border: 1px solid red;
+}

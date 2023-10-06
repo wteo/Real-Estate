@@ -1,11 +1,15 @@
 @import './variables.css';
 @import './nav_header.css';
+@import './location_admin.css';
+@import './region_admin.css';
 @import './search.css';
 @import './about_us.css';
 @import './button.css';
+@import './modal.css';
+@import './form.css';
+@import './flash_message.css';
 @import './amenities_grid.css';
 @import './location_grid.css';
-@import './article.css';
 @import './error.css';
 @import './footer.css';
 

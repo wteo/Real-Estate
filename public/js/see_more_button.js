@@ -28,9 +28,14 @@ const addSeeMoreButton = (grid) => {
 // Function to add link to each of "See More" Button depending on region
 const addLink = () => {
     const buttons = document.querySelectorAll('.region__location-button-container');
+    const isAdmin = window.location.href.includes('admin');
     for (let button of buttons) {
         const region = button.parentElement.dataset.region;
-        button.href = `/${region}`;
+        if (isAdmin) {
+            button.href = `/${region}/admin`;
+        } else {
+            button.href = `/${region}`;
+        }
     }
 }
 

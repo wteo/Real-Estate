@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Real Estate Website</title>
+    <script src="/js/delete_modal.js" defer></script>
+    <script src="/js/amenities_grid.js" defer></script>
+    <link rel="stylesheet" href="/css/main.css">
+</head>
+
+<body>
+    <header>
+        <%- include('../partials/nav_header.ejs') %>
+    </header>
+        <section>
+            <div class="location__wrapper">
+                <p class="location__breadcrumb"><a href="/<%= region %>/admin"><%= region %></a> > <%= location %></p>
+                <a href="/<%= region %>/<%= location %>/admin/update-location-form"><button>Update Location</button></a>
+                <h1 class="location__title"><%= location %></h1>
+                <div class="location__grid">
+                    <div class="location__container">
+                        <p class="location__description"><%= description %></p>
+                    </div>
+                    <div class="location__container">
+                        <img class="location__image" src="<%= mapImageLink %>" alt="Location Map" />
+
+                    </div>
+                </div>
+                <h1 class="location__amenities-title">Amenities</h1>
+                <div class="location__amenities-grid--admin">
+                    <% amenities.forEach( amenity => { %>
+                        <div class="location__amenities-container--admin">
+                            <img class="location__amenities-image--admin" src="<%= amenity.imageLink %>" alt="" />
+                            <h3 class="location__amenities-category--admin"><%= amenity.amenity %></h3>
+                            <div class="location__admin-controls">
+                                <form class="location__admin-delete-form" action="/<%= region %>/<%= location %>/admin/delete" method="POST">
+                                    <input type="hidden" name="location" value="<%= location %>" />
+                                    <input type="hidden" name="amenity" value="<%= amenity.amenity %>"/>
+                                    <input type="hidden" name="csrfToken" value="<%= csrfToken %>">
+                                    <button class="admin-delete-button">Delete</button>
+                                </form>
+                                <a href="/<%= region %>/<%= location %>/<%= amenity.amenity %>/admin/update-amenity-form"><button>Update</button></a>
+                            </div>
+                        </div>
+                    <% }) %>
+                    <a class="location__amenities-container--admin location__amenity-button-container" href="/<%= region %>/<%= location  %>/admin/add-amenity-form">
+                        <span class="location__amenity-more">+</span>
+                        <button class="location__amenity-button">Add more Amenity</button>
+                    </a>
+                </div>
+            </div>
+        </section>
+    <%- include('../../partials/footer.ejs') %>
+    <div id="delete__modal" class="modal">
+        <div class="modal__content">
+            <span class="modal__close-button">&times;</span>
+            <p class="modal__message">Are you sure you want to delete this amenity?</p>
+            <div class="modal__buttons-wrapper">
+                <button id="modal__confirm-delete-button">Yes</button>
+                <button id="modal__cancel-delete-button">Cancel</button>
+            </div>
+        </div>
+    </div>
+</body>
+
+</html>

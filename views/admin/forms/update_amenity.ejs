@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Real Estate Website</title>
+    <script src="/js/delete_modal.js" defer></script>
+    <link rel="stylesheet" href="/css/main.css">
+</head>
+
+<body>
+    <header>
+        <%- include('../partials/nav_header.ejs') %>
+    </header>
+        <section>
+            <form class="amenity__form" action="/<%= region %>/<%= location %>/<%= amenity %>/admin/update" method="POST">
+
+                <label for="amenity">Amenity:</label>
+                <input type="text" value="<%= amenity %>" name="amenity" required>
+                
+                <label for="imageLink">Amenity Image Link:</label>
+                <input type="url" value="<%= imageLink %>" name="imageLink" required>
+
+                <label for="hyperlink">Link to Article:</label>
+                <input type="url" value="<%= hyperlink %>" name="hyperlink" required>
+
+                <input type="hidden" name="csrfToken" value="<%= csrfToken %>">
+                
+                <div class="buttons-wrapper">
+                    <button type="submit">Update Amenity</button>
+                    <a href="/<%= region %>/<%= location %>/admin/"><button type="button">Cancel</button></a>
+                </div> 
+            </form>
+        </section>
+    <%- include('../../partials/footer.ejs') %>
+</body>
+
+</html>

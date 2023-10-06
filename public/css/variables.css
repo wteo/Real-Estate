@@ -30,4 +30,10 @@
     /* Article */
     --article-background-color: transparent;
     --article-font-color: #7F7979;
+
+    /* Modal */
+    --modal-border-color: #C1BDB3;
+    --modal-background-color: #FFFFFF;
+    --modal-close-button-color: #C1BDB3;
+    --model-hovered-close-button-color: #000000F;
 }

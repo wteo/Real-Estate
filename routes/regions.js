@@ -1,15 +1,22 @@
 import express from 'express';
 
 import regionsController from '../controllers/regions.js';
+import CSRFProtection from '../middlewares/csrf_protection.js';
 
 const router = express.Router();
 
-router.use('/', regionsController.getStates);
+router.get('/:region', regionsController.fetchRegion);
 
-router.get('/results', regionsController.getSearchResults);
+router.post('/admin/submit-add-region-form', CSRFProtection.verifyCSRFToken, regionsController.addRegion);
 
-router.get('/', regionsController.getRegions);
+router.post('/:region/admin/submit-update-region-form', CSRFProtection.verifyCSRFToken, regionsController.updateRegion);
 
-router.get('/:region', regionsController.getSelectedRegion);
+router.post('/admin/delete-region', CSRFProtection.verifyCSRFToken, regionsController.deleteRegion);
+
+router.post('/admin/submit-add-location-form', CSRFProtection.verifyCSRFToken, regionsController.addLocation);
+
+router.post('/:region/:location/admin/update', CSRFProtection.verifyCSRFToken, regionsController.updateLocation);
+
+router.post('/:region/admin/delete', CSRFProtection.verifyCSRFToken, regionsController.deleteLocation);
 
 export default router;

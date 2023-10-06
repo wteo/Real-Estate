@@ -1,0 +1,25 @@
+<nav class="nav">
+    <ul class="nav__menu">
+        <% states.forEach( state => { %>
+            <li class="nav__menu-title"><%= state %>
+                <br/>
+                <ul class="nav__dropdown">
+                    <% regions.forEach( region => { %>
+                        <% if (region.state === state) { %>
+                            <li class="nav__dropdown-title"><a href="/<%= region.region %>/admin"><%= region.region %></a></li>
+                        <% } %>
+                    <% }) %>
+                </ul>
+            </li>
+        <% }) %>
+    </ul>
+    <div class="nav__menu-buttons-wrapper">
+        <a href="/admin/add-region-form"><button class="nav__menu-button">Add Region</button></a>
+        <a href="/logout">
+            <form action="/logout" method="POST">
+                <input type="hidden" name="csrfToken" value="<%= csrfToken %>">
+                <button class="nav__menu-button" type="submit">Logout</button>
+            </form>
+        </a>
+    </div>
+</nav>

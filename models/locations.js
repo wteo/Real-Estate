@@ -1,29 +1,19 @@
-import { fileURLToPath } from 'url';
-import path, { dirname } from 'path';
-import fs from 'fs';
+import mongoose from 'mongoose';
 
-const __filename = fileURLToPath(import.meta.url);
-const __dirname = dirname(__filename);
+const AmenitySchema = new mongoose.Schema({
+    amenity: String,
+    imageLink: String,
+    hyperlink: String
+});
 
-class LocationsModel {
-    constructor() {
-        this.locations = this.getData();
-    }
 
-    getData() {
-        try {
-            const filePath = path.resolve(__dirname, 'locations.json');
-            const data = fs.readFileSync(filePath, 'utf8');
-            return JSON.parse(data);
-        } catch (err) {
-            console.error("Error reading JSON data:", err);
-            return [];
-        }
-    }
+const LocationSchema = new mongoose.Schema({
+    location: String,
+    description: String,
+    mapImageLink: String,
+    amenities: [AmenitySchema]
+});
 
-    getAllLocations() {
-        return this.locations;
-    }
-}
+const Locations = mongoose.model('Locations', LocationSchema);
 
-export default new LocationsModel;
+export default Locations;

@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Real Estate Website</title>
+    <link rel="stylesheet" href="/css/main.css">
+</head>
+
+<body>
+    <header>
+        <%- include('./partials/nav_header.ejs') %>
+    </header>
+        <section class="error">
+            <h1 class="error__title">Error 500</h1>
+            <p class="error__description">Oops! We are currently experiencing an internal server issue. Please come back at a later time and check again.</p>
+            <a href="/"><button class="error__button">Go back to Home</button></a>
+        </section>
+    <%- include('./partials/footer.ejs') %>
+</body>
+
+</html>
